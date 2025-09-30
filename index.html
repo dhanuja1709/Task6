@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Get in Touch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .contact-info {
+            flex: 1;
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-info h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: white;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .contact-details {
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .contact-form {
+            flex: 1.2;
+            padding: 40px;
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-header h1 {
+            color: #2575fc;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+            transition: color 0.3s;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            transition: color 0.3s;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e1e5ee;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #2575fc;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 117, 252, 0.1);
+        }
+        
+        .form-control:focus + i {
+            color: #2575fc;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+            padding-left: 15px;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+        }
+        
+        .error.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .error i {
+            margin-right: 5px;
+        }
+        
+        .field-error {
+            border-color: #e74c3c;
+        }
+        
+        .field-valid {
+            border-color: #2ecc71;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(37, 117, 252, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(37, 117, 252, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .submit-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        .submit-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .submit-btn:disabled:hover i {
+            transform: none;
+        }
+        
+        .success-message {
+            background: linear-gradient(to right, #2ecc71, #1abc9c);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-message i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .character-count {
+            text-align: right;
+            font-size: 14px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                padding: 30px;
+            }
+            
+            .contact-form {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>1/3 - 53 Hopes <br>Coimbatore</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Phone Number</h3>
+                        <p>6123456010</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email Address</h3>
+                        <p>dhanu@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <div class="form-header">
+                <h1>Contact Us</h1>
+                <p>Fill out the form below and we'll get back to you</p>
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <div class="input-with-icon">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="error" id="nameError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Please enter your name</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-with-icon">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="error" id="emailError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Please enter a valid email address</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" class="form-control" placeholder="Enter your message here..."></textarea>
+                    <div class="character-count">
+                        <span id="charCount">0</span>/500 characters
+                    </div>
+                    <div class="error" id="messageError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Please enter your message</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for contacting us. We'll get back to you soon.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const messageError = document.getElementById('messageError');
+            const successMessage = document.getElementById('successMessage');
+            const charCount = document.getElementById('charCount');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            messageInput.addEventListener('input', function() {
+                charCount.textContent = messageInput.value.length;
+                
+                if (messageInput.value.length > 500) {
+                    charCount.style.color = '#e74c3c';
+                } else {
+                    charCount.style.color = '#999';
+                }
+            });
+            
+            function validateName() {
+                if (nameInput.value.trim() === '') {
+                    nameError.classList.add('show');
+                    nameInput.classList.add('field-error');
+                    nameInput.classList.remove('field-valid');
+                    return false;
+                } else {
+                    nameError.classList.remove('show');
+                    nameInput.classList.remove('field-error');
+                    nameInput.classList.add('field-valid');
+                    return true;
+                }
+            }
+            
+            function validateEmail() {
+                if (emailInput.value.trim() === '') {
+                    emailError.querySelector('span').textContent = 'Please enter your email address';
+                    emailError.classList.add('show');
+                    emailInput.classList.add('field-error');
+                    emailInput.classList.remove('field-valid');
+                    return false;
+                } else if (!emailRegex.test(emailInput.value.trim())) {
+                    emailError.querySelector('span').textContent = 'Please enter a valid email address';
+                    emailError.classList.add('show');
+                    emailInput.classList.add('field-error');
+                    emailInput.classList.remove('field-valid');
+                    return false;
+                } else {
+                    emailError.classList.remove('show');
+                    emailInput.classList.remove('field-error');
+                    emailInput.classList.add('field-valid');
+                    return true;
+                }
+            }
+            
+            function validateMessage() {
+                if (messageInput.value.trim() === '') {
+                    messageError.classList.add('show');
+                    messageInput.classList.add('field-error');
+                    messageInput.classList.remove('field-valid');
+                    return false;
+                } else if (messageInput.value.length > 500) {
+                    messageError.querySelector('span').textContent = 'Message must be less than 500 characters';
+                    messageError.classList.add('show');
+                    messageInput.classList.add('field-error');
+                    messageInput.classList.remove('field-valid');
+                    return false;
+                } else {
+                    messageError.classList.remove('show');
+                    messageInput.classList.remove('field-error');
+                    messageInput.classList.add('field-valid');
+                    return true;
+                }
+            }
+            
+            nameInput.addEventListener('blur', validateName);
+            emailInput.addEventListener('blur', validateEmail);
+            messageInput.addEventListener('blur', validateMessage);
+            
+            nameInput.addEventListener('input', function() {
+                if (nameInput.classList.contains('field-error')) {
+                    nameError.classList.remove('show');
+                    nameInput.classList.remove('field-error');
+                }
+            });
+            
+            emailInput.addEventListener('input', function() {
+                if (emailInput.classList.contains('field-error')) {
+                    emailError.classList.remove('show');
+                    emailInput.classList.remove('field-error');
+                }
+            });
+            
+            messageInput.addEventListener('input', function() {
+                if (messageInput.classList.contains('field-error')) {
+                    messageError.classList.remove('show');
+                    messageInput.classList.remove('field-error');
+                }
+            });
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const isNameValid = validateName();
+                const isEmailValid = validateEmail();
+                const isMessageValid = validateMessage();
+                
+                if (isNameValid && isEmailValid && isMessageValid) {
+                    submitBtn.innerHTML = 'Sending <i class="fas fa-spinner fa-spin"></i>';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(function() {
+                        successMessage.classList.add('show');
+                        form.reset();
+                        
+                        charCount.textContent = '0';
+                        charCount.style.color = '#999';
+                        
+                        nameInput.classList.remove('field-valid');
+                        emailInput.classList.remove('field-valid');
+                        messageInput.classList.remove('field-valid');
+                        
+                        submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                        submitBtn.disabled = false;
+                        
+                        setTimeout(function() {
+                            successMessage.classList.remove('show');
+                        }, 5000);
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
